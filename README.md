@@ -51,7 +51,7 @@ El proyecto está desarrollado en Java 17 con Spring Boot 3 y utiliza una base d
         ./gradlew bootRun
         ```
 
-La aplicación estará disponible en `http://localhost:8080`.
+La aplicación estará disponible en `http://localhost:8081`.
 
 ## Ejecución con Docker
 
@@ -64,10 +64,10 @@ La aplicación estará disponible en `http://localhost:8080`.
 2.  **Ejecutar el contenedor:**
 
     ```bash
-    docker run -p 8080:8080 examenmercado
+    docker run -p 8081:8081 examenmercado
     ```
 
-La aplicación estará disponible en `http://localhost:8080`.
+La aplicación estará disponible en `http://localhost:8081`.
 
 ## Guía de la API
 
@@ -75,7 +75,7 @@ La aplicación estará disponible en `http://localhost:8080`.
 
 La documentación completa de la API, junto con una interfaz de usuario para probar los endpoints, está disponible en:
 
-[http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html)
+[http://localhost:8081/swagger-ui.html](http://localhost:8081/swagger-ui.html)
 
 ### Endpoints
 
