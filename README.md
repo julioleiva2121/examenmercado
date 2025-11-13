@@ -25,21 +25,31 @@ El proyecto está desarrollado en Java 17 con Spring Boot 3 y utiliza una base d
 1.  **Clonar el repositorio:**
 
     ```bash
-    git clone https://github.com/your-username/mutant-detector.git
-    cd mutant-detector
+    git clone https://github.com/your-username/examenmercado.git
+    cd examenmercado
     ```
 
 2.  **Construir el proyecto:**
 
-    ```bash
-    ./gradlew build
-    ```
+    -   En Windows:
+        ```bash
+        gradlew build
+        ```
+    -   En Linux/macOS:
+        ```bash
+        ./gradlew build
+        ```
 
 3.  **Ejecutar la aplicación:**
 
-    ```bash
-    ./gradlew bootRun
-    ```
+    -   En Windows:
+        ```bash
+        gradlew bootRun
+        ```
+    -   En Linux/macOS:
+        ```bash
+        ./gradlew bootRun
+        ```
 
 La aplicación estará disponible en `http://localhost:8080`.
 
@@ -48,13 +58,13 @@ La aplicación estará disponible en `http://localhost:8080`.
 1.  **Construir la imagen de Docker:**
 
     ```bash
-    docker build -t mutant-detector .
+    docker build -t examenmercado .
     ```
 
 2.  **Ejecutar el contenedor:**
 
     ```bash
-    docker run -p 8080:8080 mutant-detector
+    docker run -p 8080:8080 examenmercado
     ```
 
 La aplicación estará disponible en `http://localhost:8080`.
@@ -108,8 +118,13 @@ Obtiene las estadísticas de las verificaciones de ADN.
 
 ## Pruebas
 
-Para ejecutar las pruebas unitarias y de integración, utiliza el siguiente comando:
+Para ejecutar las pruebas unitarias y de integración:
 
-```bash
-./gradlew test
-```
+-   En Windows:
+    ```bash
+    gradlew test
+    ```
+-   En Linux/macOS:
+    ```bash
+    ./gradlew test
+    ```
