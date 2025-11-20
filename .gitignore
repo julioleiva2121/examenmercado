@@ -49,3 +49,6 @@ target
 /dist/
 /nbdist/
 /.nb-gradle/
+
+# Data
+/data/

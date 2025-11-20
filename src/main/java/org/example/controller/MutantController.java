@@ -1,6 +1,8 @@
 package org.example.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.ExampleObject;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.example.model.DnaRequest;
@@ -32,7 +34,23 @@ public class MutantController {
             @ApiResponse(responseCode = "403", description = "The human is not a mutant")
     })
     @PostMapping("/mutant")
-    public ResponseEntity<Void> isMutant(@RequestBody DnaRequest dnaRequest) {
+    public ResponseEntity<Void> isMutant(@io.swagger.v3.oas.annotations.parameters.RequestBody(
+            description = "DNA sequence to analyze",
+            required = true,
+            content = @Content(
+                    mediaType = "application/json",
+                    examples = {
+                            @ExampleObject(
+                                    name = "Mutant DNA",
+                                    value = "{\"dna\":[\"ATGCGA\",\"CAGTGC\",\"TTATGT\",\"AGAAGG\",\"CCCCTA\",\"TCACTG\"]}"
+                            ),
+                            @ExampleObject(
+                                    name = "Human DNA",
+                                    value = "{\"dna\":[\"ATGCGA\",\"CAGTGC\",\"TTATTT\",\"AGACGG\",\"GCGTCA\",\"TCACTG\"]}"
+                            )
+                    }
+            )
+    ) @RequestBody DnaRequest dnaRequest) {
         boolean isMutant = mutantService.processDna(dnaRequest.getDna());
         return isMutant ? ResponseEntity.ok().build() : ResponseEntity.status(HttpStatus.FORBIDDEN).build();
     }
