@@ -1,11 +1,10 @@
-
 FROM alpine:latest as build
-RUN apk update
-RUN apk add openjdk17
+RUN apk update && apk add openjdk17
 COPY . .
 RUN chmod +x ./gradlew
-RUN ./gradlew bootjaar --no-daemon
-FROM openjdk:17-alpine
+RUN ./gradlew bootJar --no-daemon
+
+FROM openjdk:17-jdk-alpine
 EXPOSE 8080
-COPY --from=build /app/build/libs/*.jar app.jar
+COPY --from=build /build/libs/*.jar app.jar
 ENTRYPOINT ["java", "-jar", "app.jar"]
