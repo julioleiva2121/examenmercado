@@ -1,12 +1,11 @@
-# Stage 1: Build the application
-FROM gradle:jdk17 AS build
-WORKDIR /app
-COPY . .
-RUN ./gradlew build --no-daemon
 
-# Stage 2: Create the final image
-FROM openjdk:17-jre-slim-buster
-WORKDIR /app
-COPY --from=build /app/build/libs/*.jar app.jar
+FROM alpine:latest as build
+RUN apk update
+RUN apk add openjdk17
+COPY . .
+RUN chmod +x ./gradlew
+RUN ./gradlew bootjaar --no-daemon
+FROM openjdk:17-alpine
 EXPOSE 8080
+COPY --from=build /app/build/libs/*.jar app.jar
 ENTRYPOINT ["java", "-jar", "app.jar"]
